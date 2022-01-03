@@ -21,6 +21,7 @@ function InvoiceForm(props) {
     Price: "",
     Total: 0,
     Date: "",
+    DueDate: "",
     Status: "Pending",
   });
 
@@ -76,6 +77,7 @@ function InvoiceForm(props) {
       Price: "",
       Total: 0,
       Date: "",
+      DueDate: "",
       Status: "Pending",
     });
   }
@@ -175,6 +177,7 @@ function InvoiceForm(props) {
       <CalenderStatusDiv changeStyle={props.theme}>
         <CalendarDiv>
           <InputBox
+            text="Invoice Date"
             type="text"
             placeholder="24-10-2021"
             name="Date"
@@ -183,11 +186,22 @@ function InvoiceForm(props) {
             theme={props.theme}
           />
         </CalendarDiv>
-        <select name="Status" id="Status" onChange={(e) => handleChange(e)}>
+        {/* <select name="Status" id="Status" onChange={(e) => handleChange(e)}>
           <option value="Pending">Pending</option>
           <option value="Draft">Draft</option>
           <option value="Paid">Paid</option>
-        </select>
+        </select> */}
+        <CalendarDiv>
+          <InputBox
+            text="Due Date"
+            type="text"
+            placeholder="20-11-2021"
+            name="DueDate"
+            value={listItem.DueDate}
+            onChange={(e) => handleChange(e)}
+            theme={props.theme}
+          />
+        </CalendarDiv>
       </CalenderStatusDiv>
       <InputBox
         text="Project Description"
@@ -377,23 +391,17 @@ const SendButton = styled.div`
 `;
 
 const CalendarDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-
-  p {
-    font-size: 12px;
-  }
 `;
 
 const CalenderStatusDiv = styled.div`
   display: flex;
-  margin-top: 20px;
+  ${"" /* margin-top: 20px; */}
   align-items: center;
   justify-content: space-between;
 
-  select {
+  ${
+    "" /* select {
     margin-right: 10px;
     padding: 12px;
     width: 100%;
@@ -402,5 +410,6 @@ const CalenderStatusDiv = styled.div`
     border: ${(props) =>
       props.changeStyle ? "1px solid #252945" : "1px solid #dfe3fa"};
     color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
+  } */
   }
 `;

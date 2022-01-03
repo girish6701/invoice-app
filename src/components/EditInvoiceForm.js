@@ -30,7 +30,10 @@ function EditInvoiceForm(props) {
 
   return (
     <NewInvoice show={props.burgerStatus} changeStyle={props.theme}>
-      <h2>New Invoice</h2>
+      <h2>
+        Edit <span className="hash-tag">#</span>
+        {listItem.UniqueID}
+      </h2>
       <p className="text">Bill Form</p>
       <InputBox
         text="Street Address"
@@ -123,6 +126,7 @@ function EditInvoiceForm(props) {
       <CalenderStatusDiv changeStyle={props.theme}>
         <CalendarDiv>
           <InputBox
+            text="Invoice Date"
             type="text"
             placeholder="24-10-2021"
             name="Date"
@@ -131,11 +135,17 @@ function EditInvoiceForm(props) {
             theme={props.theme}
           />
         </CalendarDiv>
-        <select name="Status" id="Status">
-          <option value="Pending">Pending</option>
-          <option value="Draft">Draft</option>
-          <option value="Paid">Paid</option>
-        </select>
+        <CalendarDiv>
+          <InputBox
+            text="Due Date"
+            type="text"
+            placeholder="20-11-2021"
+            name="DueDate"
+            value={listItem.DueDate}
+            onChange={(e) => handleChange(e)}
+            theme={props.theme}
+          />
+        </CalendarDiv>
       </CalenderStatusDiv>
       <InputBox
         text="Project Description"
@@ -238,6 +248,10 @@ const NewInvoice = styled.div`
     margin-top: 30px;
     font-weight: bold;
   }
+
+  .hash-tag {
+    color: #888eb0;
+  }
 `;
 
 const ThreeInput = styled.div`
@@ -323,23 +337,16 @@ const SendButton = styled.div`
 `;
 
 const CalendarDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-
-  p {
-    font-size: 12px;
-  }
 `;
 
 const CalenderStatusDiv = styled.div`
   display: flex;
-  margin-top: 20px;
+  ${'' /* margin-top: 20px; */}
   align-items: center;
   justify-content: space-between;
 
-  select {
+  ${'' /* select {
     margin-right: 10px;
     padding: 12px;
     width: 100%;
@@ -348,5 +355,5 @@ const CalenderStatusDiv = styled.div`
     border: ${(props) =>
       props.changeStyle ? "1px solid #252945" : "1px solid #dfe3fa"};
     color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
-  }
+  } */}
 `;

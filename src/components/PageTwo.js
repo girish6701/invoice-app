@@ -120,7 +120,7 @@ function PageTwo(props) {
             <ContainerTwo changeStyle={props.theme}>
               <div>
                 <p className="small-heading">Payment Due</p>
-                <p className="main-text">21 Sep 2021</p>
+                <p className="main-text">{currentInvoice.DueDate}</p>
               </div>
               <p className="small-heading small-width">
                 {currentInvoice.ClientStreetAddress +
