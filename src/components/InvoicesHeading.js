@@ -16,7 +16,6 @@ function InvoicesHeading(props) {
     //     }
     //   });
     // });
-    // console.log(b);
   }
 
   return (
