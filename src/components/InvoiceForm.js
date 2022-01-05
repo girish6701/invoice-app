@@ -3,6 +3,7 @@ import styled from "styled-components";
 import InputBox from "../small_components/InputBox";
 
 function InvoiceForm(props) {
+  const [isDraft, setDraft] = useState(false);
   const [listItem, setListItem] = useState({
     UniqueID: makeid(),
     StreetAddress: "",
@@ -22,7 +23,7 @@ function InvoiceForm(props) {
     Total: 0,
     Date: "",
     DueDate: "",
-    Status: "Pending",
+    Status: isDraft ? "Draft" : "Pending",
   });
 
   function makeid() {
@@ -58,6 +59,12 @@ function InvoiceForm(props) {
     props.setBurgerStatus(false);
   }
 
+  function handleDraft() {
+    setListItem((prevNote) => {
+      return { ...prevNote, Status: isDraft ? "Pending" : "Draft" };
+    });
+  }
+
   function resetList() {
     setListItem({
       UniqueID: makeid(),
@@ -78,7 +85,7 @@ function InvoiceForm(props) {
       Total: 0,
       Date: "",
       DueDate: "",
-      Status: "Pending",
+      Status: isDraft ? "Draft" : "Pending",
     });
   }
 
@@ -252,6 +259,21 @@ function InvoiceForm(props) {
           </p>
         </div>
       </FourInput>
+      <p className="text">Check if you want to mark as Draft, else it will be marked Pending</p>
+      <DraftOption changeStyle={props.theme}>
+        <input
+          type="checkbox"
+          id="draft"
+          name="Status"
+          value="Draft"
+          checked={isDraft}
+          onChange={() => {
+            setDraft(!isDraft);
+            handleDraft();
+          }}
+        />
+        <p>Mark as Draft</p>
+      </DraftOption>
       <ActivityButtons>
         <DiscardButton
           onClick={() => {
@@ -262,6 +284,7 @@ function InvoiceForm(props) {
           Discard
         </DiscardButton>
         <div style={{ display: "flex" }}>
+          {/* <DraftButton onClick={handleDraft}>Save as Draft</DraftButton> */}
           <SendButton onClick={handleClick}>Save & Send</SendButton>
         </div>
       </ActivityButtons>
@@ -411,5 +434,18 @@ const CalenderStatusDiv = styled.div`
       props.changeStyle ? "1px solid #252945" : "1px solid #dfe3fa"};
     color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
   } */
+  }
+`;
+
+const DraftOption = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-top: 6px;
+  color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
+  font-weight: bold;
+
+  input {
+    margin-right: 5px;
   }
 `;

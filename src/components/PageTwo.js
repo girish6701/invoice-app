@@ -29,6 +29,7 @@ function PageTwo(props) {
       return { ...prev, Status: "Paid" };
     });
     var invoices = JSON.parse(localStorage.getItem("invoices"));
+    localStorage.setItem("selectedInvoice", JSON.stringify(currentInvoice));
     invoices.map((element) => {
       if (element.UniqueID === currentInvoice.UniqueID) {
         element.Status = "Paid";

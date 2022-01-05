@@ -4,6 +4,13 @@ import InputBox from "../small_components/InputBox";
 
 function EditInvoiceForm(props) {
   const [listItem, setListItem] = useState(props.current);
+  const [isDraft, setDraft] = useState(listItem.Status==="Draft" ? true : false);
+
+  function handleDraft() {
+    setListItem((prevNote) => {
+      return { ...prevNote, Status: isDraft ? "Pending" : "Draft" };
+    });
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -196,6 +203,23 @@ function EditInvoiceForm(props) {
           </p>
         </div>
       </FourInput>
+      <p className="text">
+        Check if you want to mark as Draft, else it will be marked Pending
+      </p>
+      <DraftOption changeStyle={props.theme}>
+        <input
+          type="checkbox"
+          id="draft"
+          name="Status"
+          value="Draft"
+          checked={isDraft}
+          onChange={() => {
+            setDraft(!isDraft);
+            handleDraft();
+          }}
+        />
+        <p>Mark as Draft</p>
+      </DraftOption>
       <ActivityButtons>
         <DiscardButton
           onClick={() => {
@@ -342,11 +366,12 @@ const CalendarDiv = styled.div`
 
 const CalenderStatusDiv = styled.div`
   display: flex;
-  ${'' /* margin-top: 20px; */}
+  ${"" /* margin-top: 20px; */}
   align-items: center;
   justify-content: space-between;
 
-  ${'' /* select {
+  ${
+    "" /* select {
     margin-right: 10px;
     padding: 12px;
     width: 100%;
@@ -355,5 +380,19 @@ const CalenderStatusDiv = styled.div`
     border: ${(props) =>
       props.changeStyle ? "1px solid #252945" : "1px solid #dfe3fa"};
     color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
-  } */}
+  } */
+  }
+`;
+
+const DraftOption = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin-top: 6px;
+  color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
+  font-weight: bold;
+
+  input {
+    margin-right: 5px;
+  }
 `;
