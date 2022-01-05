@@ -9,28 +9,28 @@ import styled from "styled-components";
 function PageOne(props) {
   const [burgerStatus, setBurgerStatus] = useState(false);
   const [filterStatus, setFilterStatus] = useState("All");
-  var b = JSON.parse(localStorage.getItem("invoices"));
+  var invoices = JSON.parse(localStorage.getItem("Invoices"));
 
   function handleFilter(status) {
-    var a = JSON.parse(localStorage.getItem("invoices"));
+    var filterInvoices = JSON.parse(localStorage.getItem("Invoices"));
     if (status === "All") {
-      return createInvoiceTile(a);
+      return createInvoiceTile(filterInvoices);
     } else {
-      a = handleStatusChange(a, status);
-      return createInvoiceTile(a);
+      filterInvoices = handleStatusChange(filterInvoices, status);
+      return createInvoiceTile(filterInvoices);
     }
   }
 
-  function handleStatusChange(a, status) {
-    return a.filter(function (element) {
+  function handleStatusChange(filterInvoices, status) {
+    return filterInvoices.filter(function (element) {
       return element.Status === status;
     });
   }
 
-  function createInvoiceTile(a) {
+  function createInvoiceTile(filterInvoices) {
     return (
-      a !== null &&
-      a.map((element, index) => {
+      filterInvoices !== null &&
+      filterInvoices.map((element, index) => {
         return (
           <InvoiceTile
             key={index}
@@ -56,7 +56,7 @@ function PageOne(props) {
         filterStatus={filterStatus}
         setFilterStatus={setFilterStatus}
       />
-      {(b === null || (b !== null && b.length === 0)) && (
+      {(invoices === null || (invoices !== null && invoices.length === 0)) && (
         <NoInvoicesPage theme={props.theme} />
       )}
       <InvoiceForm

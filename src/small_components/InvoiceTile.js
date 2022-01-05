@@ -6,13 +6,13 @@ import StatusBox from "./StatusBox";
 function InvoiceTile(props) {
   function getInvoice(event) {
     var uniqueID = event.target.getAttribute("id");
-    var a = JSON.parse(localStorage.getItem("invoices"));
-    var b = find(a, uniqueID);
-    localStorage.setItem("selectedInvoice", JSON.stringify(b));
+    var invoices = JSON.parse(localStorage.getItem("Invoices"));
+    var selectedInvoice = find(invoices, uniqueID);
+    localStorage.setItem("SelectedInvoice", JSON.stringify(selectedInvoice));
   }
 
-  function find(a, uniqueID) {
-    return a.find((element) => {
+  function find(invoices, uniqueID) {
+    return invoices.find((element) => {
       return element.UniqueID === uniqueID;
     });
   }
@@ -81,7 +81,6 @@ function InvoiceTile(props) {
                 getInvoice(e);
               }}
             />
-            {/* <Link to="/info"> */}
             <ClickBtn
               id={props.uniqueID}
               onTouchStart={(e) => {
@@ -110,7 +109,6 @@ function InvoiceTile(props) {
                 />
               </svg>
             </ClickBtn>
-            {/* </Link> */}
           </RightContainer>
         </InformationTile>
       </Link>

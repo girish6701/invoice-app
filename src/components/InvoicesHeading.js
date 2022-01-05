@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 function InvoicesHeading(props) {
-  var a = JSON.parse(localStorage.getItem("invoices"));
-  // const [a, setValueA] = useState(JSON.parse(localStorage.getItem("invoices")));
+  var a = JSON.parse(localStorage.getItem("Invoices"));
+
   function handleChange(event) {
     const { value } = event.target;
     props.setFilterStatus(value);
-    // setValueA(() => {
-    //   var b=[];
-    //   return a.map((element) => {
-    //     if (element.Status === value) {
-    //       b.push(element);
-    //     }
-    //   });
-    // });
   }
 
   return (

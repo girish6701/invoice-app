@@ -52,9 +52,9 @@ function InvoiceForm(props) {
     setListItem((prevNote) => {
       return { ...prevNote, Date: "date.toDateString()" };
     });
-    var a = JSON.parse(localStorage.getItem("invoices")) || [];
+    var a = JSON.parse(localStorage.getItem("Invoices")) || [];
     a.push(listItem);
-    localStorage.setItem("invoices", JSON.stringify(a));
+    localStorage.setItem("Invoices", JSON.stringify(a));
     resetList();
     props.setBurgerStatus(false);
   }
@@ -193,11 +193,6 @@ function InvoiceForm(props) {
             theme={props.theme}
           />
         </CalendarDiv>
-        {/* <select name="Status" id="Status" onChange={(e) => handleChange(e)}>
-          <option value="Pending">Pending</option>
-          <option value="Draft">Draft</option>
-          <option value="Paid">Paid</option>
-        </select> */}
         <CalendarDiv>
           <InputBox
             text="Due Date"
@@ -259,7 +254,9 @@ function InvoiceForm(props) {
           </p>
         </div>
       </FourInput>
-      <p className="text">Check if you want to mark as Draft, else it will be marked Pending</p>
+      <p className="text">
+        Check if you want to mark as Draft, else it will be marked Pending
+      </p>
       <DraftOption changeStyle={props.theme}>
         <input
           type="checkbox"
@@ -284,7 +281,6 @@ function InvoiceForm(props) {
           Discard
         </DiscardButton>
         <div style={{ display: "flex" }}>
-          {/* <DraftButton onClick={handleDraft}>Save as Draft</DraftButton> */}
           <SendButton onClick={handleClick}>Save & Send</SendButton>
         </div>
       </ActivityButtons>
@@ -419,22 +415,8 @@ const CalendarDiv = styled.div`
 
 const CalenderStatusDiv = styled.div`
   display: flex;
-  ${"" /* margin-top: 20px; */}
   align-items: center;
   justify-content: space-between;
-
-  ${
-    "" /* select {
-    margin-right: 10px;
-    padding: 12px;
-    width: 100%;
-    background-color: ${(props) => (props.changeStyle ? "#1E2139" : "white")};
-    border-radius: 4px;
-    border: ${(props) =>
-      props.changeStyle ? "1px solid #252945" : "1px solid #dfe3fa"};
-    color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
-  } */
-  }
 `;
 
 const DraftOption = styled.div`

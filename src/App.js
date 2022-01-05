@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [theme, setDarkTheme] = useState(
-    JSON.parse(localStorage.getItem("theme") || false)
+    JSON.parse(localStorage.getItem("Theme") || false)
   );
-  localStorage.setItem("theme", theme);
+  localStorage.setItem("Theme", theme);
 
   return (
     <>

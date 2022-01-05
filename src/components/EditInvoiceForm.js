@@ -4,7 +4,9 @@ import InputBox from "../small_components/InputBox";
 
 function EditInvoiceForm(props) {
   const [listItem, setListItem] = useState(props.current);
-  const [isDraft, setDraft] = useState(listItem.Status==="Draft" ? true : false);
+  const [isDraft, setDraft] = useState(
+    listItem.Status === "Draft" ? true : false
+  );
 
   function handleDraft() {
     setListItem((prevNote) => {
@@ -18,12 +20,12 @@ function EditInvoiceForm(props) {
       return { ...prevNote, [name]: value };
     });
   }
-  localStorage.setItem("selectedInvoice", JSON.stringify(listItem));
+  localStorage.setItem("SelectedInvoice", JSON.stringify(listItem));
 
   function handleClick() {
-    var a = JSON.parse(localStorage.getItem("invoices"));
+    var a = JSON.parse(localStorage.getItem("Invoices"));
     var b = a.findIndex((element) => element.UniqueID === listItem.UniqueID);
-    props.setCurrent(JSON.parse(localStorage.getItem("selectedInvoice")));
+    props.setCurrent(JSON.parse(localStorage.getItem("SelectedInvoice")));
     a = a.map((element, index) => {
       if (index === b) {
         return listItem;
@@ -31,7 +33,7 @@ function EditInvoiceForm(props) {
         return element;
       }
     });
-    localStorage.setItem("invoices", JSON.stringify(a));
+    localStorage.setItem("Invoices", JSON.stringify(a));
     props.setBurgerStatus(!props.burgerStatus);
   }
 
@@ -366,22 +368,8 @@ const CalendarDiv = styled.div`
 
 const CalenderStatusDiv = styled.div`
   display: flex;
-  ${"" /* margin-top: 20px; */}
   align-items: center;
   justify-content: space-between;
-
-  ${
-    "" /* select {
-    margin-right: 10px;
-    padding: 12px;
-    width: 100%;
-    background-color: ${(props) => (props.changeStyle ? "#1E2139" : "white")};
-    border-radius: 4px;
-    border: ${(props) =>
-      props.changeStyle ? "1px solid #252945" : "1px solid #dfe3fa"};
-    color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
-  } */
-  }
 `;
 
 const DraftOption = styled.div`
