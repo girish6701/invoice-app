@@ -3,7 +3,7 @@ import Header from "./Header";
 import StatusBox from "../small_components/StatusBox";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import EditInvoiceForm from "./EditInvoiceForm";
+import EditInvoice from "./EditInvoice";
 
 function PageTwo(props) {
   var invoice = JSON.parse(localStorage.getItem("SelectedInvoice"));
@@ -27,8 +27,8 @@ function PageTwo(props) {
     setCurrentInvoice((prev) => {
       return { ...prev, Status: "Paid" };
     });
-    var invoices = JSON.parse(localStorage.getItem("Invoices"));
     localStorage.setItem("SelectedInvoice", JSON.stringify(currentInvoice));
+    var invoices = JSON.parse(localStorage.getItem("Invoices"));
     invoices.map((element) => {
       if (element.UniqueID === currentInvoice.UniqueID) {
         element.Status = "Paid";
@@ -40,7 +40,7 @@ function PageTwo(props) {
   return (
     <div>
       <Header theme={props.theme} setDarkTheme={props.setDarkTheme} />
-      <EditInvoiceForm
+      <EditInvoice
         burgerStatus={burgerStatus}
         current={currentInvoice}
         setCurrent={setCurrentInvoice}

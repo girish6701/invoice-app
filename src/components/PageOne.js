@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./Header";
 import InvoicesHeading from "./InvoicesHeading";
 import InvoiceTile from "../small_components/InvoiceTile";
-import InvoiceForm from "./InvoiceForm";
+import CreateInvoice from "./CreateInvoice";
 import NoInvoicesPage from "./NoInvoicesPage";
 import styled from "styled-components";
 
@@ -59,7 +59,7 @@ function PageOne(props) {
       {(invoices === null || (invoices !== null && invoices.length === 0)) && (
         <NoInvoicesPage theme={props.theme} />
       )}
-      <InvoiceForm
+      <CreateInvoice
         burgerStatus={burgerStatus}
         setBurgerStatus={setBurgerStatus}
         theme={props.theme}
