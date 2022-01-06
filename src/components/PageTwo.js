@@ -33,7 +33,6 @@ function PageTwo(props) {
       }
     });
     localStorage.setItem("Invoices", JSON.stringify(invoices));
-    localStorage.setItem("SelectedInvoice", JSON.stringify(currentInvoice));
   }
 
   return (
