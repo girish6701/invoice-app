@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 function InvoicesHeading(props) {
-  var a = JSON.parse(localStorage.getItem("Invoices"));
+  let a = JSON.parse(localStorage.getItem("Invoices"));
 
   function handleChange(event) {
     const { value } = event.target;
@@ -39,7 +39,7 @@ function InvoicesHeading(props) {
               <option value="Draft">Draft</option>
             </select>
           </FilterContainer>
-          <Button onClick={() => props.setBurgerStatus(true)}>
+          <NewInvoiceButton onClick={() => props.setBurgerStatus(true)}>
             <Svg>
               <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -50,7 +50,7 @@ function InvoicesHeading(props) {
               </svg>
             </Svg>
             <p>New Invoice</p>
-          </Button>
+          </NewInvoiceButton>
         </RightContainer>
       </CenterContainer>
     </MainContainer>
@@ -120,7 +120,7 @@ const FilterContainer = styled.div`
   }
 `;
 
-const Button = styled.div`
+const NewInvoiceButton = styled.div`
   background-color: #7c5dfa;
   font-size: 10px;
   padding: 7px;

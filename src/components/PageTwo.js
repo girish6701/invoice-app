@@ -6,18 +6,17 @@ import { Link } from "react-router-dom";
 import EditInvoice from "./EditInvoice";
 
 function PageTwo(props) {
-  var invoice = JSON.parse(localStorage.getItem("SelectedInvoice"));
+  let invoice = JSON.parse(localStorage.getItem("SelectedInvoice"));
   const [currentInvoice, setCurrentInvoice] = useState(invoice);
   const [burgerStatus, setBurgerStatus] = useState(false);
-  localStorage.setItem("SelectedInvoice", JSON.stringify(currentInvoice));
 
   function handleEdit() {
     setBurgerStatus(true);
   }
 
   function handleDelete() {
-    var invoices = JSON.parse(localStorage.getItem("Invoices"));
-    var nonDeletedInvoices = invoices.filter(function (element) {
+    let invoices = JSON.parse(localStorage.getItem("Invoices"));
+    let nonDeletedInvoices = invoices.filter(function (element) {
       return element.UniqueID !== currentInvoice.UniqueID;
     });
     localStorage.setItem("Invoices", JSON.stringify(nonDeletedInvoices));
@@ -27,14 +26,14 @@ function PageTwo(props) {
     setCurrentInvoice((prev) => {
       return { ...prev, Status: "Paid" };
     });
-    localStorage.setItem("SelectedInvoice", JSON.stringify(currentInvoice));
-    var invoices = JSON.parse(localStorage.getItem("Invoices"));
+    let invoices = JSON.parse(localStorage.getItem("Invoices"));
     invoices.map((element) => {
       if (element.UniqueID === currentInvoice.UniqueID) {
         element.Status = "Paid";
       }
     });
     localStorage.setItem("Invoices", JSON.stringify(invoices));
+    localStorage.setItem("SelectedInvoice", JSON.stringify(currentInvoice));
   }
 
   return (

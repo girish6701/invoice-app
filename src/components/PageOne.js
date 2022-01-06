@@ -9,10 +9,10 @@ import styled from "styled-components";
 function PageOne(props) {
   const [burgerStatus, setBurgerStatus] = useState(false);
   const [filterStatus, setFilterStatus] = useState("All");
-  var invoices = JSON.parse(localStorage.getItem("Invoices"));
+  let invoices = JSON.parse(localStorage.getItem("Invoices"));
 
   function handleFilter(status) {
-    var filterInvoices = JSON.parse(localStorage.getItem("Invoices"));
+    let filterInvoices = JSON.parse(localStorage.getItem("Invoices"));
     if (status === "All") {
       return createInvoiceTile(filterInvoices);
     } else {

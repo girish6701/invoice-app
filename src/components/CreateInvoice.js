@@ -26,15 +26,15 @@ function CreateInvoice(props) {
   });
 
   function makeid() {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var nums = "1234567890";
-    var charactersLength = characters.length;
-    var numsLength = nums.length;
-    for (var i = 0; i < 2; i++) {
+    let result = "";
+    let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let nums = "1234567890";
+    let charactersLength = characters.length;
+    let numsLength = nums.length;
+    for (let i = 0; i < 2; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
-    for (var j = 0; j < 4; j++) {
+    for (let j = 0; j < 4; j++) {
       result += nums.charAt(Math.floor(Math.random() * numsLength));
     }
     return result;
@@ -48,10 +48,7 @@ function CreateInvoice(props) {
   }
 
   function handleClick() {
-    setListItem((prevNote) => {
-      return { ...prevNote, Date: "date.toDateString()" };
-    });
-    var a = JSON.parse(localStorage.getItem("Invoices")) || [];
+    let a = JSON.parse(localStorage.getItem("Invoices")) || [];
     a.push(listItem);
     localStorage.setItem("Invoices", JSON.stringify(a));
     resetList();

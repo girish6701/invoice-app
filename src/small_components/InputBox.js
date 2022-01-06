@@ -21,10 +21,6 @@ const Input = styled.div.attrs((props) => ({
 }))`
   margin-right: 10px;
 
-  p {
-    margin-top: 20px;
-    margin-bottom: 8px;
-  }
   input {
     background-color: ${(props) => (props.changeStyle ? "#1E2139" : "white")};
     color: ${(props) => (props.changeStyle ? "white" : "black")};
@@ -47,6 +43,8 @@ const Input = styled.div.attrs((props) => ({
   .input-text {
     color: ${(props) => (props.changeStyle ? "#DFE3FA" : "#7e88c3")};
     font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
   }
 `;
 

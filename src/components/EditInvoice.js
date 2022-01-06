@@ -22,8 +22,8 @@ function EditInvoice(props) {
   localStorage.setItem("SelectedInvoice", JSON.stringify(listItem));
 
   function handleClick() {
-    var invoices = JSON.parse(localStorage.getItem("Invoices"));
-    var currentInvoiceIndex = invoices.findIndex(
+    let invoices = JSON.parse(localStorage.getItem("Invoices"));
+    let currentInvoiceIndex = invoices.findIndex(
       (element) => element.UniqueID === listItem.UniqueID
     );
     props.setCurrent(JSON.parse(localStorage.getItem("SelectedInvoice")));

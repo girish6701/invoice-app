@@ -3,9 +3,13 @@ import styled from "styled-components";
 
 function StatusBox(props) {
   return (
-    <StatusContainer statusInfo={props.status} changeStyle={props.change}>
-      <p className="status">
-        <span>●</span>
+    <StatusContainer
+      id={props.id}
+      statusInfo={props.status}
+      changeStyle={props.changeStyle}
+    >
+      <p className="status" id={props.id}>
+        <span id={props.id}>●</span>
         {props.status}
       </p>
     </StatusContainer>

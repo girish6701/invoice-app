@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import StatusBox from "./StatusBox";
+import { Link } from "react-router-dom";
 
 function InvoiceTile(props) {
   function getInvoice(event) {
-    var uniqueID = event.target.getAttribute("id");
-    var invoices = JSON.parse(localStorage.getItem("Invoices"));
-    var selectedInvoice = find(invoices, uniqueID);
+    let uniqueID = event.target.getAttribute("id");
+    let invoices = JSON.parse(localStorage.getItem("Invoices"));
+    let selectedInvoice = find(invoices, uniqueID);
     localStorage.setItem("SelectedInvoice", JSON.stringify(selectedInvoice));
   }
 
@@ -19,96 +19,55 @@ function InvoiceTile(props) {
 
   return (
     <TileContainer>
-      <Link to="/info" style={{ textDecoration: "none" }}>
+      <Link to="/info" style={{ textDecoration: "none" }} id={props.uniqueID}>
         <InformationTile
           id={props.uniqueID}
-          onTouchStart={(e) => {
-            getInvoice(e);
-          }}
+          changeStyle={props.theme}
           onMouseEnter={(e) => {
             getInvoice(e);
           }}
-          changeStyle={props.theme}
+          onTouchStart={(e) => {
+            getInvoice(e);
+          }}
         >
-          <div
-            className="IDdiv"
-            id={props.uniqueID}
-            onTouchStart={(e) => {
-              getInvoice(e);
-            }}
-          >
-            <span className="hashtag">#</span>
-            <span className="invoice-id">{props.uniqueID}</span>
+          <div className="IDdiv" id={props.uniqueID}>
+            <span className="hashtag" id={props.uniqueID}>
+              #
+            </span>
+            <span className="invoice-id" id={props.uniqueID}>
+              {props.uniqueID}
+            </span>
           </div>
-          <p
-            className="invoice-date"
-            id={props.uniqueID}
-            onTouchStart={(e) => {
-              getInvoice(e);
-            }}
-          >
+          <p className="invoice-date" id={props.uniqueID}>
             {props.date}
           </p>
-          <p
-            className="name"
-            id={props.uniqueID}
-            onTouchStart={(e) => {
-              getInvoice(e);
-            }}
-          >
+          <p className="name" id={props.uniqueID}>
             {props.name}
           </p>
-          <p
-            className="amount"
-            id={props.uniqueID}
-            onTouchStart={(e) => {
-              getInvoice(e);
-            }}
-          >
+          <p className="amount" id={props.uniqueID}>
             £ {props.amount}
           </p>
-          <RightContainer
-            id={props.uniqueID}
-            onTouchStart={(e) => {
-              getInvoice(e);
-            }}
-          >
+          <RightContainer id={props.uniqueID}>
             <StatusBox
+              id={props.uniqueID}
               status={props.status}
               changeStyle={props.theme}
-              id={props.uniqueID}
-              onTouchStart={(e) => {
-                getInvoice(e);
-              }}
             />
-            <ClickBtn
+            <svg
               id={props.uniqueID}
-              onTouchStart={(e) => {
-                getInvoice(e);
-              }}
+              width="7"
+              height="10"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
+              <path
                 id={props.uniqueID}
-                onTouchStart={(e) => {
-                  getInvoice(e);
-                }}
-                width="7"
-                height="10"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 1l4 4-4 4"
-                  stroke="#7C5DFA"
-                  strokeWidth="2"
-                  fill="none"
-                  fillRule="evenodd"
-                  id={props.uniqueID}
-                  onTouchStart={(e) => {
-                    getInvoice(e);
-                  }}
-                />
-              </svg>
-            </ClickBtn>
+                d="M1 1l4 4-4 4"
+                stroke="#7C5DFA"
+                strokeWidth="2"
+                fill="none"
+                fillRule="evenodd"
+              />
+            </svg>
           </RightContainer>
         </InformationTile>
       </Link>
@@ -124,8 +83,6 @@ const TileContainer = styled.div`
   justify-content: center;
   padding: 0 15px;
 `;
-
-const ClickBtn = styled.div``;
 
 const InformationTile = styled.div`
   box-sizing: border-box;
