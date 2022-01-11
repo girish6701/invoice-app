@@ -23,10 +23,7 @@ function InvoiceTile(props) {
         <InformationTile
           id={props.uniqueID}
           changeStyle={props.theme}
-          onMouseEnter={(e) => {
-            getInvoice(e);
-          }}
-          onTouchStart={(e) => {
+          onClick={(e) => {
             getInvoice(e);
           }}
         >
