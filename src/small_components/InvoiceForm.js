@@ -3,6 +3,20 @@ import styled from "styled-components";
 import InputBox from "../small_components/InputBox";
 
 function InvoiceForm(props) {
+  function handleDiscard() {
+    if (props.edit) {
+      props.setListItem(props.current);
+    } else {
+      props.resetList();
+    }
+    props.setBurgerStatus(false);
+  }
+
+  function handleDraftChange() {
+    props.setDraft(!props.isDraft);
+    props.handleDraft();
+  }
+
   return (
     <NewInvoice show={props.burgerStatus} changeStyle={props.theme}>
       {!props.edit && <h2>New Invoice</h2>}
@@ -185,26 +199,12 @@ function InvoiceForm(props) {
           name="Status"
           value="Draft"
           checked={props.isDraft}
-          onChange={() => {
-            props.setDraft(!props.isDraft);
-            props.handleDraft();
-          }}
+          onChange={handleDraftChange}
         />
         <p>Mark as Draft</p>
       </DraftOption>
       <ActivityButtons>
-        <DiscardButton
-          onClick={() => {
-            if (props.edit) {
-              props.setListItem(props.current);
-            } else {
-              props.resetList();
-            }
-            props.setBurgerStatus(false);
-          }}
-        >
-          Discard
-        </DiscardButton>
+        <DiscardButton onClick={handleDiscard}>Discard</DiscardButton>
         <div style={{ display: "flex" }}>
           <SendButton onClick={props.handleClick}>Save & Send</SendButton>
         </div>
