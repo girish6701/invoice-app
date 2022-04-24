@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as ReactLogo } from "../assets/illustration-empty.svg";
 
 function NoInvoicesPage(props) {
-  return (
+  return ( 
     <EmptyContainer changeStyle={props.theme}>
       <div className="empty-div">
         <ReactLogo />

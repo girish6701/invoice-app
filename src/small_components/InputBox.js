@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+ 
 function InputBox(props) {
   return (
     <Input changeStyle={props.theme} className={props.className}>

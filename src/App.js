@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PageOne from "./components/PageOne";
 import PageTwo from "./components/PageTwo";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 
 function App() {
   const [theme, setDarkTheme] = useState(

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InvoiceForm from "../small_components/InvoiceForm";
-
+ 
 function CreateInvoice(props) {
   const [isDraft, setDraft] = useState(false);
   const [listItem, setListItem] = useState({

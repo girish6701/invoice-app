@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import StatusBox from "./StatusBox";
 import { Link } from "react-router-dom";
-
+ 
 function InvoiceTile(props) {
   function getInvoice(event) {
     let uniqueID = event.target.getAttribute("id");

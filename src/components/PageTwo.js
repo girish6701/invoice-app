@@ -4,7 +4,7 @@ import StatusBox from "../small_components/StatusBox";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import EditInvoice from "./EditInvoice";
-
+ 
 function PageTwo(props) {
   let invoice = JSON.parse(localStorage.getItem("SelectedInvoice"));
   const [currentInvoice, setCurrentInvoice] = useState(invoice);

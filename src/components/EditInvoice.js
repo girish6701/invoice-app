@@ -37,7 +37,7 @@ function EditInvoice(props) {
     localStorage.setItem("Invoices", JSON.stringify(invoices));
     props.setBurgerStatus(!props.burgerStatus);
   }
-
+ 
   return (
     <InvoiceForm
       listItem={listItem}

@@ -45,7 +45,7 @@ function PageOne(props) {
       })
     );
   }
-
+ 
   return (
     <Main changeStyle={props.theme} >
       <Header theme={props.theme} setDarkTheme={props.setDarkTheme} />

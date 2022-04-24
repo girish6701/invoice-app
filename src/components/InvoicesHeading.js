@@ -8,7 +8,7 @@ function InvoicesHeading(props) {
     const { value } = event.target;
     props.setFilterStatus(value);
   }
-
+ 
   return (
     <MainContainer>
       <CenterContainer>

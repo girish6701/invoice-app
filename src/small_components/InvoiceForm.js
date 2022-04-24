@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import InputBox from "../small_components/InputBox";
-
+ 
 function InvoiceForm(props) {
   function handleDiscard() {
     if (props.edit) {
