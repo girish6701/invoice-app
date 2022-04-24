@@ -47,7 +47,7 @@ function PageOne(props) {
   }
 
   return (
-    <Main changeStyle={props.theme}>
+    <Main changeStyle={props.theme} >
       <Header theme={props.theme} setDarkTheme={props.setDarkTheme} />
       <InvoicesHeading
         setBurgerStatus={setBurgerStatus}
